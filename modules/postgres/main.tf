@@ -3,13 +3,13 @@ resource "docker_network" "app_network" {
 }
 
 resource "docker_image" "app_postgres" {
-  name = "postgres:13"
+  name         = "postgres:13"
   keep_locally = false
 }
 
 resource "docker_container" "app_postgres" {
   image = docker_image.app_postgres.image_id
-  name = "${var.name_prefix}_db"
+  name  = "${var.name_prefix}_db"
   networks_advanced {
     name = "${var.name_prefix}_network"
   }

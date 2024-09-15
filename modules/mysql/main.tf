@@ -3,13 +3,13 @@ resource "docker_network" "app_network" {
 }
 
 resource "docker_image" "app_mysql" {
-  name = "mysql:8.4"
+  name         = "mysql:8.4"
   keep_locally = false
 }
 
 resource "docker_container" "app_mysql" {
   image = docker_image.app_mysql.image_id
-  name = "${var.name_prefix}_db"
+  name  = "${var.name_prefix}_db"
   networks_advanced {
     name = "${var.name_prefix}_network"
   }
